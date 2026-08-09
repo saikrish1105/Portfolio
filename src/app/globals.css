@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+@theme {
+  --color-rosso: #ff2800;
+  --color-modena: #fff200;
+  --color-sector: #b100e8;
+  --color-asphalt: #0b0b0d;
+  --color-card: #141418;
+  --color-edge: #1e1e24;
+  --color-sub: #a1a1aa;
+  --font-display: "Orbitron", "Titillium Web", sans-serif;
+  --font-mono2: "Share Tech Mono", "JetBrains Mono", monospace;
+}
+
+html {
+  background: #0b0b0d;
+  scrollbar-color: #ff2800 #0b0b0d;
+}
+
+body {
+  background: #0b0b0d;
+  color: #fff;
+  overscroll-behavior-y: none;
+}
+
+::selection {
+  background: #ff2800;
+  color: #000;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0b0d;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#ff2800, #7a1300);
+  border: 2px solid #0b0b0d;
+}
+
+/* ---------- clipped carbon corners ---------- */
+.clip-card {
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+}
+.clip-card-l {
+  clip-path: polygon(12px 0, 100% 0, 100% 100%, 0 100%, 0 12px);
+}
+
+/* ---------- buttons ---------- */
+.neon-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #ff2800;
+  color: #fff;
+  background: rgba(255, 40, 0, 0.14);
+  padding: 9px 16px;
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  transition: all 0.18s ease;
+}
+.neon-btn:hover {
+  background: #ff2800;
+  color: #000;
+  box-shadow: 0 0 24px #ff2800;
+}
+.neon-btn-yellow {
+  border-color: #fff200;
+  background: rgba(255, 242, 0, 0.1);
+}
+.neon-btn-yellow:hover {
+  background: #fff200;
+  color: #000;
+  box-shadow: 0 0 24px #fff200;
+}
+
+.link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #1e1e24;
+  background: rgba(0, 0, 0, 0.4);
+  color: #e8e8ee;
+  padding: 7px 12px;
+  font-family: var(--font-mono2);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
+  transition: all 0.15s ease;
+}
+.link-btn:hover {
+  border-color: #b100e8;
+  color: #b100e8;
+  box-shadow: 0 0 14px rgba(177, 0, 232, 0.4);
+}
+
+/* ---------- fx ---------- */
+.scanlines {
+  background: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 3px);
+  mix-blend-mode: overlay;
+  opacity: 0.5;
+}
+
+.hero-name {
+  text-shadow: 0 0 38px rgba(255, 40, 0, 0.7), 0 3px 0 #000;
+  letter-spacing: 0.03em;
+}
+
+.animate-blink {
+  animation: blink 1.15s steps(2, start) infinite;
+}
+@keyframes blink {
+  50% {
+    opacity: 0.12;
+  }
+}
+
+.panel-in {
+  animation: panelIn 0.45s cubic-bezier(0.2, 0.9, 0.3, 1) both;
+}
+@keyframes panelIn {
+  from {
+    opacity: 0;
+    transform: translateX(46px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.modal-in {
+  animation: modalIn 0.35s cubic-bezier(0.2, 0.9, 0.3, 1) both;
+}
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: scale(0.94) translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.banner-in {
+  animation: bannerIn 0.4s cubic-bezier(0.2, 0.9, 0.3, 1) both;
+}
+@keyframes bannerIn {
+  from {
+    opacity: 0;
+    transform: scaleX(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-blink,
+  .panel-in,
+  .modal-in,
+  .banner-in {
+    animation: none;
+  }
+}
